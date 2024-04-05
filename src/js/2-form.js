@@ -1,15 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.querySelector('.feedback-form');
 
-
     const saveFormDataToLocalStorage = () => {
         const formData = {
-            email: form.email.value,
-            message: form.message.value
+            email: form.email.value.trim(),
+            message: form.message.value.trim()
         };
         localStorage.setItem('feedback-form-state', JSON.stringify(formData));
     };
-
 
     const loadFormDataFromLocalStorage = () => {
         const savedData = localStorage.getItem('feedback-form-state');
@@ -20,12 +18,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-
     loadFormDataFromLocalStorage();
 
-
     form.addEventListener('input', saveFormDataToLocalStorage);
-
 
     form.addEventListener('submit', (event) => {
         event.preventDefault();
